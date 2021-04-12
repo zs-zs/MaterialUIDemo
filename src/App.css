@@ -1,0 +1,13 @@
+.container {
+  border: solid 1px black;
+}
+
+.bg-nice {
+  background-color: #f7f1e3;
+}
+
+.text {
+  font-size: larger;
+  font-weight: bold;
+  color: grey;
+}
