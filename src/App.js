@@ -1,11 +1,9 @@
 import './App.css';
-import { ButtonsDemo } from './components/ButtonsDemo';
+import { Main } from './components/Main';
 
 function App() {
   return (
-    <div className="App">
-      <ButtonsDemo />
-    </div>
+    <Main />
   );
 }
 export default App;
