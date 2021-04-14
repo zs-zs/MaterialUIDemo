@@ -1,3 +1,18 @@
+#root,
+body {
+  height: 100vh;
+}
+@media screen and (max-width: 1366px) {
+  body {
+    overflow: auto;
+  }
+}
+@media screen and (min-width: 1367px) {
+  body {
+    overflow: hidden;
+  }
+}
+
 a {
   text-decoration: none;
 }
@@ -21,7 +36,29 @@ a {
 }
 
 .container {
-  border: solid 1px black;
+  height: 100%;
+  background-color: blanchedalmond;
+  padding: 30px;
+}
+
+.container div {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.container label {
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+.presentation {
+  padding: 10px;
+}
+
+form {
+  margin-top: 15px;
+  padding: 15px;
+  border: grey solid 1px;
 }
 
 .bg-nice {

@@ -2,10 +2,10 @@ import { Card, CardActionArea, CardContent, CardHeader, CardMedia, Typography } 
 import { Route, Switch } from "react-router";
 import card from "../media/card.jpg"
 
-export function Home(params) {
+export function Cards(params) {
     return (
         <Switch>
-            <Route path="/home" exact>
+            <Route path="/cards" exact>
                 <div className="card-container">
                     <Card className="card">
                         <CardHeader className="header" title="MATERIAL UI Bemutató" titleTypographyProps={{ variant: "h3" }} />
