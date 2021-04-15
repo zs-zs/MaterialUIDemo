@@ -1,4 +1,6 @@
-import { AppBar, Menu, createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+import { AppBar, Menu, createMuiTheme, MuiThemeProvider, styled, Toolbar } from "@material-ui/core";
+import MuiButton from "@material-ui/core/Button"
+import { spacing } from '@material-ui/system';
 import { ButtonsDemo } from "./ButtonsDemo";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useState } from "react";
@@ -7,6 +9,35 @@ import { Router } from "react-router-dom";
 import { history } from "../history";
 import { Cards } from "./Cards";
 import { Colors } from "./Colors";
+import { Gallery } from "./Gallery";
+import { ImageSwiper } from "./ImageSwiper";
+import { Tables } from "./Tables";
+const items = [
+    {
+        text: "Colors",
+        link: "/colors"
+    },
+    {
+        text: "Buttons",
+        link: "/buttons"
+    },
+    {
+        text: "Cards",
+        link: "/cards"
+    },
+    {
+        text: "Gallery",
+        link: "/gallery"
+    },
+    {
+        text: "Swiper",
+        link: "/swiper"
+    },
+    {
+        text: "Table",
+        link: "/tables"
+    }
+];
 
 const defaultColors = [
     {
@@ -66,6 +97,8 @@ const defaultColors = [
     }
 ];
 
+const MenuButton = styled(MuiButton)(spacing);
+
 export function Main(props) {
 
     const [colors, setColors] = useState(defaultColors);
@@ -116,40 +149,35 @@ export function Main(props) {
         setAnchorEl(null)
     }
 
-    const items = [
-        {
-            text: "Colors",
-            link: "/colors"
-        },
-        {
-            text: "Buttons",
-            link: "/buttons"
-        },
-        {
-            text: "Cards",
-            link: "/cards"
-        }
-    ];
+
 
     return (
         <MuiThemeProvider theme={theme}>
             <Router history={history}>
-                <AppBar position="static">
-                    <MenuIcon onClick={handleOpen} />
-                    <Menu
-                        id="mainmenu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                    >
-                        <MenuItems items={items} handleClose={handleClose} />
-                    </Menu>
+                <AppBar>
+                    <Toolbar>
+                        <MenuIcon onClick={handleOpen} />
+                        <Menu
+                            id="mainmenu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItems items={items} handleClose={handleClose} />
+                        </Menu>
+                        {items.map((x, idx) => <MenuButton key={idx} mr={1} color="inherit" onClick={() => history.push(x.link)}> {x.text}</MenuButton>)}
+                    </Toolbar>
                 </AppBar>
-                <Colors onColorChange={handleColorChange} defaultColors={colors} />
-                <Cards />
-                <ButtonsDemo />
+                <div style={{ height: "100%", marginTop: "64px" }}>
+                    <Colors onColorChange={handleColorChange} defaultColors={colors} />
+                    <Cards />
+                    <ButtonsDemo />
+                    <Gallery />
+                    <ImageSwiper />
+                    <Tables />
+                </div>
             </Router>
-        </MuiThemeProvider>
+        </MuiThemeProvider >
     )
 }

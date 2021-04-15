@@ -1,10 +1,13 @@
-import { CardHeader, Grid, TextField, Typography, Card, CardActionArea, CardContent, Button, Container, makeStyles, Box, Select, MenuItem } from "@material-ui/core";
+import { Grid, TextField, Typography, Button, Container, makeStyles, Box, Select, MenuItem } from "@material-ui/core";
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import moment from "moment";
 import MomentUtils from "@date-io/moment"
 import { useState } from "react";
 import { Route, Switch } from "react-router";
 import "moment/locale/eu";
+import { MyAccordion } from "./MyAccordion";
+import { MyBadge } from "../MyBadge";
+import { MyAlerts } from "./MyAlerts";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,8 +51,10 @@ export function Colors(props) {
                     </Grid>
                     <Grid item>
                         <Box className={classes.box}>
-                            <Typography variant="h3" color="textPrimary">Elsődleges szöveg</Typography>
-                            <Typography variant="h4" color="textSecondary">Másodlagos szöveg</Typography>
+                            <div>
+                                <Typography style={{ display: "inline-block", marginRight: "30px" }} variant="h3" color="textPrimary">Elsődleges szöveg</Typography>
+                                <Typography style={{ display: "inline-block" }} variant="h4" color="textSecondary">Másodlagos szöveg</Typography>
+                            </div>
                             <form noValidate autoComplete="off">
                                 <Grid container spacing={2} direction="row">
                                     <Grid item>
@@ -75,27 +80,38 @@ export function Colors(props) {
                                     </Grid>
                                 </Grid>
                             </form>
-                            <Card style={{ marginTop: "20px" }}>
-                                <CardHeader title="Ez egy Card" titleTypographyProps={{ variant: "h3" }}></CardHeader>
-                                <CardActionArea>
-                                    <CardContent>
-                                        <Typography variant="h5">
-                                            Ez a Card a paper szinét használja háttérnek.
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
                             <Container className={classes.root}>
                                 <Button color="primary" variant="contained">Primary Button</Button>
                                 <Button color="primary" variant="outlined">Primary Button</Button>
                                 <Button color="secondary" variant="contained">Secondary Button</Button>
                                 <Button color="secondary" variant="outlined">Secondary Button</Button>
                             </Container>
-                            <Select>
-                                <MenuItem>Alma</MenuItem>
-                                <MenuItem>Bálna</MenuItem>
-                                <MenuItem>Valami</MenuItem>
-                            </Select>
+                            <Container className={classes.root}>
+                                <Select variant="filled">
+                                    <MenuItem>Alma</MenuItem>
+                                    <MenuItem>Bálna</MenuItem>
+                                    <MenuItem>Valami</MenuItem>
+                                </Select>
+                                <Select variant="outlined">
+                                    <MenuItem>Alma</MenuItem>
+                                    <MenuItem>Bálna</MenuItem>
+                                    <MenuItem>Valami</MenuItem>
+                                </Select>
+                                <Select variant="standard">
+                                    <MenuItem>Alma</MenuItem>
+                                    <MenuItem>Bálna</MenuItem>
+                                    <MenuItem>Valami</MenuItem>
+                                </Select>
+                            </Container>
+                            <Container>
+                                <MyAccordion />
+                            </Container>
+                            <Container>
+                                <MyBadge />
+                            </Container>
+                            <Container>
+                                <MyAlerts />
+                            </Container>
                         </Box>
                     </Grid>
                 </Grid>
