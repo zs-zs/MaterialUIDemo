@@ -5,19 +5,19 @@ export const tableData = {
             id: "EMLÉK1",
             type: "Emlékoldal",
             name: "Béla születésnap",
-            registered: "01-06-2021"
+            registered: "2021-06-01"
         },
         {
             id: "LINK1",
             type: "Link",
             name: "",
-            registered: "16-06-2021"
+            registered: "2021-06-16"
         },
         {
             id: "EMLÉK2",
             type: "Emlékoldal",
             name: "Esküvőnk",
-            registered: "25-08-2021"
+            registered: "2021-08-25"
         }
     ]
 }

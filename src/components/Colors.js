@@ -1,4 +1,4 @@
-import { Grid, TextField, Typography, Button, Container, makeStyles, Box, Select, MenuItem } from "@material-ui/core";
+import { Grid, TextField, Typography, Button, Container, makeStyles, Box, Select, MenuItem, Checkbox, FormControlLabel } from "@material-ui/core";
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import moment from "moment";
 import MomentUtils from "@date-io/moment"
@@ -85,6 +85,9 @@ export function Colors(props) {
                                 <Button color="primary" variant="outlined">Primary Button</Button>
                                 <Button color="secondary" variant="contained">Secondary Button</Button>
                                 <Button color="secondary" variant="outlined">Secondary Button</Button>
+                                <FormControlLabel control={<Checkbox color="primary" defaultChecked />} label="primary" />
+                                <FormControlLabel control={<Checkbox color="secondary" defaultChecked />} label="secondary" />
+                                <FormControlLabel control={<Checkbox color="default" defaultChecked />} label="default" />
                             </Container>
                             <Container className={classes.root}>
                                 <Select variant="filled">

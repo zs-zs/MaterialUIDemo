@@ -5,7 +5,7 @@ import { ButtonsDemo } from "./ButtonsDemo";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useState } from "react";
 import { MenuItems } from "./MenuItems";
-import { Router } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import { history } from "../history";
 import { Cards } from "./Cards";
 import { Colors } from "./Colors";
@@ -89,11 +89,6 @@ const defaultColors = [
         name: "paper",
         label: "Paper Background",
         color: "#ffffff"
-    },
-    {
-        name: "background",
-        label: "Default Background",
-        color: "#fafafa"
     }
 ];
 
@@ -130,8 +125,7 @@ export function Main(props) {
                 disabled: colors[8].color
             },
             background: {
-                paper: colors[9].color,
-                default: colors[10].color
+                paper: colors[9].color
             }
         },
     });
@@ -154,26 +148,35 @@ export function Main(props) {
     return (
         <MuiThemeProvider theme={theme}>
             <Router history={history}>
-                <AppBar>
-                    <Toolbar>
-                        <MenuIcon onClick={handleOpen} />
-                        <Menu
-                            id="mainmenu"
-                            anchorEl={anchorEl}
-                            keepMounted
-                            open={Boolean(anchorEl)}
-                            onClose={handleClose}
-                        >
-                            <MenuItems items={items} handleClose={handleClose} />
-                        </Menu>
-                        {items.map((x, idx) => <MenuButton key={idx} mr={1} color="inherit" onClick={() => history.push(x.link)}> {x.text}</MenuButton>)}
-                    </Toolbar>
-                </AppBar>
+                <Switch>
+                    <Route path="/gallery" exact>
+                        <Gallery />
+                    </Route>
+                    <Route>
+                        <AppBar>
+                            <Toolbar>
+                                <MenuIcon onClick={handleOpen} />
+                                <Menu
+                                    id="mainmenu"
+                                    anchorEl={anchorEl}
+                                    keepMounted
+                                    open={Boolean(anchorEl)}
+                                    onClose={handleClose}
+                                >
+                                    <MenuItems items={items} handleClose={handleClose} />
+                                </Menu>
+                                {items.map((x, idx) => <MenuButton key={idx} mr={1} color="inherit" onClick={() => history.push(x.link)}> {x.text}</MenuButton>)}
+                            </Toolbar>
+                        </AppBar>
+
+                    </Route>
+                </Switch >
+
+
                 <div style={{ height: "100%", marginTop: "64px" }}>
                     <Colors onColorChange={handleColorChange} defaultColors={colors} />
                     <Cards />
                     <ButtonsDemo />
-                    <Gallery />
                     <ImageSwiper />
                     <Tables />
                 </div>
