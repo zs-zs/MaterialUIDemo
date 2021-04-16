@@ -1,4 +1,4 @@
-import { Grid, TextField, Typography, Button, Container, makeStyles, Box, Select, MenuItem, Checkbox, FormControlLabel } from "@material-ui/core";
+import { Grid, TextField, Typography, Button, Container, makeStyles, Box, Select, MenuItem, Checkbox, FormControlLabel, FormControl, InputLabel } from "@material-ui/core";
 import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import moment from "moment";
 import MomentUtils from "@date-io/moment"
@@ -27,6 +27,10 @@ export function Colors(props) {
     const { defaultColors, onColorChange } = props;
     const [selectedDate, setSelectedDate] = useState(new Date('2014-08-18T21:11:54'));
     const [age, setAge] = useState(0);
+    const [select1, setSelect1] = useState('alma');
+    const [select2, setSelect2] = useState('balna');
+    const [select3, setSelect3] = useState('valami');
+
     const classes = useStyles();
 
     const handleDateChange = (date) => {
@@ -58,7 +62,8 @@ export function Colors(props) {
                             <form noValidate autoComplete="off">
                                 <Grid container spacing={2} direction="row">
                                     <Grid item>
-                                        <TextField label="Name" required defaultValue="Name" />
+                                        <TextField label="First Name" required defaultValue="Name" variant="outlined" />
+                                        <TextField label="Last Name" required variant="outlined" />
                                     </Grid>
                                     <Grid item>
                                         <MuiPickersUtilsProvider libInstance={moment} utils={MomentUtils} locale={"en"}>
@@ -90,21 +95,30 @@ export function Colors(props) {
                                 <FormControlLabel control={<Checkbox color="default" defaultChecked />} label="default" />
                             </Container>
                             <Container className={classes.root}>
-                                <Select variant="filled">
-                                    <MenuItem>Alma</MenuItem>
-                                    <MenuItem>Bálna</MenuItem>
-                                    <MenuItem>Valami</MenuItem>
-                                </Select>
-                                <Select variant="outlined">
-                                    <MenuItem>Alma</MenuItem>
-                                    <MenuItem>Bálna</MenuItem>
-                                    <MenuItem>Valami</MenuItem>
-                                </Select>
-                                <Select variant="standard">
-                                    <MenuItem>Alma</MenuItem>
-                                    <MenuItem>Bálna</MenuItem>
-                                    <MenuItem>Valami</MenuItem>
-                                </Select>
+                                <FormControl variant="filled">
+                                    <InputLabel variant="filled">Mező</InputLabel>
+                                    <Select value={select1} onChange={(event) => setSelect1(event.target.value)} variant="filled" label="Mező">
+                                        <MenuItem value="alma">Alma</MenuItem>
+                                        <MenuItem value="balna">Bálna</MenuItem>
+                                        <MenuItem value="valami">Valami</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <FormControl variant="outlined">
+                                    <InputLabel variant="outlined">Mező</InputLabel>
+                                    <Select value={select2} onChange={(event) => setSelect2(event.target.value)} variant="outlined" label="Mező">
+                                        <MenuItem value="alma">Alma</MenuItem>
+                                        <MenuItem value="balna">Bálna</MenuItem>
+                                        <MenuItem value="valami">Valami</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <FormControl variant="standard">
+                                    <InputLabel variant="standard">Mező</InputLabel>
+                                    <Select value={select3} onChange={(event) => setSelect3(event.target.value)} variant="standard" label="Mező">
+                                        <MenuItem value="alma">Alma</MenuItem>
+                                        <MenuItem value="balna">Bálna</MenuItem>
+                                        <MenuItem value="valami">Valami</MenuItem>
+                                    </Select>
+                                </FormControl>
                             </Container>
                             <Container>
                                 <MyAccordion />

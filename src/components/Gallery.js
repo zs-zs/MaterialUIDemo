@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import "./Gallery.css";
 import { images } from "../images";
 
 export function Gallery(props) {
